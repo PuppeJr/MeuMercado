@@ -9,7 +9,22 @@ class Produto {
 }
 
 class Supermercado {
+
+    public void listarProdutos() {
+    }
     // Definição da classe Supermercado (mesmo código anterior)
+
+    public void buscarProdutoPorNome(String nomeBusca) {
+    }
+
+    public void buscarProdutoPorTipo(String tipoBusca) {
+    }
+
+    public void cadastrarProduto(String nomeCadastro, String tipoCadastro, double valorCadastro, int estoqueCadastro) {
+    }
+
+    public void excluirProduto(String nomeExclusao) {
+    }
 
     // ...
 }
