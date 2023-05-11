@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 class Produto {
@@ -123,9 +121,13 @@ public class Main {
                 case 5:
                     System.out.println("Digite o nome do produto a ser excluído:");
                     String nomeExclusao = scanner.nextLine();
-                    supermercado.excluirProduto(nomeExclusao);
+                    extracted(supermercado, nomeExclusao);
                     break;
             }
         }
+    }
+
+    private static void extracted(Supermercado supermercado, String nomeExclusao) {
+        supermercado.excluirProduto(nomeExclusao);
     }
 }
