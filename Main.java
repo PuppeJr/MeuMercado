@@ -1,27 +1,68 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+
 
 class Produto {
+
+    public Produto(String nomeCadastro, String tipoCadastro, double valorCadastro, int estoqueCadastro) {
+    }
     // Definição da classe Produto (mesmo código anterior)
 
     // ...
 }
 
+
 class Supermercado {
+    private ArrayList<Produto> produtos;
+
+    public Supermercado() {
+        produtos = new ArrayList<Produto>();
+    }
 
     public void listarProdutos() {
+        for (Produto p : produtos) {
+            System.out.println(p);
+        }
     }
-    // Definição da classe Supermercado (mesmo código anterior)
 
     public void buscarProdutoPorNome(String nomeBusca) {
+        // busca produto por nome
     }
 
     public void buscarProdutoPorTipo(String tipoBusca) {
+        // busca produto por tipo
     }
 
     public void cadastrarProduto(String nomeCadastro, String tipoCadastro, double valorCadastro, int estoqueCadastro) {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado", "username", "password");
+            String sql = "INSERT INTO produtos (nome, tipo, valor, estoque) VALUES (?, ?, ?, ?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, nomeCadastro);
+            stmt.setString(2, tipoCadastro);
+            stmt.setDouble(3, valorCadastro);
+            stmt.setInt(4, estoqueCadastro);
+            stmt.executeUpdate();
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("Erro ao cadastrar produto: " + e.getMessage());
+           // Onde "username" e "password" devem ser substituídos pelas credenciais de acesso ao banco de dados MySql.
+        }
     }
 
+    // ...
+}
+
     public void excluirProduto(String nomeExclusao) {
+        // exclui produto pelo nome
     }
 
     // ...
