@@ -59,7 +59,7 @@ class Supermercado {
     }
 
     // ...
-}
+
 
     public void excluirProduto(String nomeExclusao) {
         // exclui produto pelo nome
